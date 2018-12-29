@@ -1,22 +1,34 @@
 import React, { Component } from 'react';
-import Dashboard from './components/Dashboard';
-import Switcher from './components/Switcher';
+import Dashboard from './features/profile/components/Dashboard';
+import Content from './features/profile/components/Content';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      links: [
+        {
+          title: 'Employment Details',
+          chapter: 'employment'
+        },
+        {
+          title: 'Personal Details',
+          chapter: 'personal'
+        },
+        {
+          title: 'Contact Details',
+          chapter: 'contact'
+        }
+      ]
+    };
+  }
+
   render() {
     return (
       <>
         <main className="boss-page-main">
           <Dashboard />
-          <div className="boss-page-main__content">
-            <div className="boss-page-main__inner">
-              <div className="boss-content-switcher">
-                <div className="boss-content-switcher__inner">
-                  <Switcher />
-                </div>
-              </div>
-            </div>
-          </div>
+          <Content links={this.state.links} />
         </main>
         {/* <div className="react-datepicker__portal" /> */}
       </>
