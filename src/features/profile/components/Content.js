@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import ContentLeft from './ContentLeft';
-import ContentMain from './ContentMain';
 
 class Content extends Component {
   render() {
@@ -10,8 +7,7 @@ class Content extends Component {
         <div className="boss-page-main__inner">
           <div className="boss-content-switcher">
             <div className="boss-content-switcher__inner">
-              <ContentLeft links={this.props.links} />
-              <ContentMain />
+              {this.props.children}
             </div>
           </div>
         </div>
@@ -19,9 +15,5 @@ class Content extends Component {
     );
   }
 }
-
-Content.propTypes = {
-  links: PropTypes.array.isRequired
-};
 
 export default Content;

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Dashboard from './features/profile/components/Dashboard';
 import Content from './features/profile/components/Content';
+import ContentLeft from './features/profile/components/ContentLeft';
+import ContentMain from './features/profile/components/ContentMain';
+import Nav from './features/profile/components/Nav';
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +31,12 @@ class App extends Component {
       <>
         <main className="boss-page-main">
           <Dashboard />
-          <Content links={this.state.links} />
+          <Content>
+            <ContentLeft>
+              <Nav links={this.state.links} />
+            </ContentLeft>
+            <ContentMain />
+          </Content>
         </main>
         {/* <div className="react-datepicker__portal" /> */}
       </>
