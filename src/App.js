@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
 import Dashboard from './features/profile/components/Dashboard';
 import Content from './features/profile/components/Content';
 import ContentLeft from './features/profile/components/ContentLeft';
@@ -22,24 +24,32 @@ class App extends Component {
           title: 'Contact Details',
           chapter: 'contact'
         }
-      ]
+      ],
+      activeChapter: 'employment'
     };
   }
 
+  onSetActiveChapter = chapter => {
+    this.setState({
+      activeChapter: chapter
+    });
+  };
+
   render() {
     return (
-      <>
-        <main className="boss-page-main">
-          <Dashboard />
-          <Content>
-            <ContentLeft>
-              <Nav links={this.state.links} />
-            </ContentLeft>
-            <ContentMain />
-          </Content>
-        </main>
-        {/* <div className="react-datepicker__portal" /> */}
-      </>
+      <main className="boss-page-main">
+        <Dashboard />
+        <Content>
+          <ContentLeft>
+            <Nav
+              links={this.state.links}
+              activeChapter={this.state.activeChapter}
+              setActiveChapter={this.onSetActiveChapter}
+            />
+          </ContentLeft>
+          <ContentMain chapter={this.state.activeChapter} />
+        </Content>
+      </main>
     );
   }
 }
