@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form } from 'react-final-form';
 import Dates from './../../../utils/dates';
 import FormField from './../../FormField';
-import FormFieldSelect from './FormFieldSelect';
+import FormFieldSelect from './../../FormFieldSelect';
 import FormFieldDate from './FormFieldDate';
 
 function onSubmit(values) {
