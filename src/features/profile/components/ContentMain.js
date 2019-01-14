@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
-import Chapter from './Chapter';
+import { Switch, Route } from 'react-router-dom';
+import EmploymentForm from './EmploymentForm';
+import PersonalForm from './PersonalForm';
+import ContactForm from './ContactForm';
 
 class ContentMain extends Component {
   render() {
     return (
       <section className="boss-content-switcher__chapters">
-        <Chapter />
+        <Switch>
+          <Route exact path="/employment" component={EmploymentForm} />
+          <Route exact path="/personal" component={PersonalForm} />
+          <Route exact path="/contact" component={ContactForm} />
+        </Switch>
       </section>
     );
   }
