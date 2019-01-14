@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field } from 'react-final-form';
 import PropTypes from 'prop-types';
 import BossDatePicker from './../../datepicker/components/BossDatePicker';
-import FormErrorMessage from './FormErrorMessage';
+import FormErrorMessage from './../../FormErrorMessage';
 
 class FormFieldDate extends Component {
   render() {

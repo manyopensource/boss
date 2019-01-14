@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import { Field } from 'react-final-form';
 import PropTypes from 'prop-types';
-import FormErrorMessage from './FormErrorMessage';
+import FormErrorMessage from './../../FormErrorMessage';
 
 class FormFieldSelect extends Component {
   render() {
