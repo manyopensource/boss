@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form } from 'react-final-form';
 import Dates from './../../../utils/dates';
-import FormField from './FormField';
+import FormField from './../../FormField';
 import FormFieldSelect from './FormFieldSelect';
 import PollBox from './PollBox';
 import FormFieldDate from './FormFieldDate';

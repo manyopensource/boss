@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form } from 'react-final-form';
-import FormField from './FormField';
+import FormField from './../../FormField';
 
 function onSubmit(values) {
   console.log(values);
