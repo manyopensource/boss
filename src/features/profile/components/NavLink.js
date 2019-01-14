@@ -10,10 +10,10 @@ class NavLink extends Component {
   render() {
     return (
       <A
-        to={'/' + this.props.link.chapter}
+        exact
+        to={'/edit-profile/' + this.props.link.chapter}
         activeClassName="boss-content-switcher__nav-link_state_active"
         className="boss-content-switcher__nav-link"
-        data-chapter={this.props.link.chapter}
         onClick={this.handleClick}
       >
         {this.props.link.title}
