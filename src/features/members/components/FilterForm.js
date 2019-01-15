@@ -9,11 +9,29 @@ function onSubmit(values) {
 }
 
 class FilterForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      masterVenueOnly: false
+    };
+  }
+
+  onToggleMasterVenueOnly = bool => {
+    this.setState({
+      masterVenueOnly: bool
+    });
+  };
+
   render() {
     const options = [
       { value: 'chocolate', label: 'Chocolate' },
       { value: 'strawberry', label: 'Strawberry' },
       { value: 'vanilla', label: 'Vanilla' }
+    ];
+    const options2 = [
+      { value: 'watermelon', label: 'Watermelon' },
+      { value: 'orange', label: 'Orange' },
+      { value: 'kiwifruit', label: 'Kiwifruit' }
     ];
     return (
       <Form
@@ -34,7 +52,9 @@ class FilterForm extends Component {
                 <FormFieldSelectCheckbox
                   name="venue"
                   label="Venue"
-                  options={options}
+                  options={this.state.masterVenueOnly ? options2 : options}
+                  masterVenueOnly={this.state.masterVenueOnly}
+                  toggleMasterVenueOnly={this.onToggleMasterVenueOnly}
                 />
                 <FormFieldSelect
                   name="staffType"
