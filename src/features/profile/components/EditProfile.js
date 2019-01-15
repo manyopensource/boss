@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Dashboard from './Dashboard';
-import Content from './Content';
+import Content from './../../Content';
+import Switcher from './Switcher';
 import ContentLeft from './ContentLeft';
 import Nav from './Nav';
 import ContentMain from './ContentMain';
@@ -38,14 +39,16 @@ class EditProfile extends Component {
       <>
         <Dashboard />
         <Content>
-          <ContentLeft>
-            <Nav
-              links={this.state.links}
-              activeChapter={this.state.activeChapter}
-              setActiveChapter={this.onSetActiveChapter}
-            />
-          </ContentLeft>
-          <ContentMain chapter={this.state.activeChapter} />
+          <Switcher>
+            <ContentLeft>
+              <Nav
+                links={this.state.links}
+                activeChapter={this.state.activeChapter}
+                setActiveChapter={this.onSetActiveChapter}
+              />
+            </ContentLeft>
+            <ContentMain chapter={this.state.activeChapter} />
+          </Switcher>
         </Content>
       </>
     );
