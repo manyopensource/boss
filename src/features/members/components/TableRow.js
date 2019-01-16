@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 import Dates from './../../../utils/dates';
 
 class TableRow extends Component {
@@ -34,23 +35,24 @@ class TableRow extends Component {
         <div className="boss-table__row">
           <div className="boss-table__cell">
             <div className="boss-table__image">
-              <a href="#" className="boss-table__link">
+              <Link to="" className="boss-table__link">
                 <div className="boss-avatar boss-avatar_type_combined">
                   <img
                     src={require('./../../../imgs/' + this.props.member.pic)}
                     className="boss-avatar__image"
+                    alt=""
                   />
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="boss-table__cell">
             <div className="boss-table__info">
               <p className="boss-table__label">Name</p>
               <p className="boss-table__text">
-                <a href="#" className="boss-table__link">
+                <Link to="" className="boss-table__link">
                   {this.props.member.name}
-                </a>
+                </Link>
               </p>
             </div>
           </div>
@@ -58,9 +60,11 @@ class TableRow extends Component {
             <div className="boss-table__info">
               <p className="boss-table__label">Modified</p>
               <p className="boss-table__text">
-                <a href="#" className="boss-table__link">
-                  {moment(this.props.member.modifiedAt).format(Dates.commonDateFormat)}
-                </a>
+                <Link to="" className="boss-table__link">
+                  {moment(this.props.member.modifiedAt).format(
+                    Dates.commonDateFormat
+                  )}
+                </Link>
               </p>
             </div>
           </div>
@@ -86,29 +90,29 @@ class TableRow extends Component {
             <div className="boss-table__info">
               <p className="boss-table__label">Type</p>
               <p className="boss-table__text">
-                <a href="#" className="boss-table__link">
+                <Link to="" className="boss-table__link">
                   {this.props.member.type}
-                </a>
+                </Link>
               </p>
             </div>
           </div>
           <div className="boss-table__cell">
-            <div class="boss-table__info">
-              <p class="boss-table__label">Master Venue</p>
-              <p class="boss-table__text">
-                <a href="#" class="boss-table__link">
+            <div className="boss-table__info">
+              <p className="boss-table__label">Master Venue</p>
+              <p className="boss-table__text">
+                <Link to="" className="boss-table__link">
                   {this.props.member.masterVenue}
-                </a>
+                </Link>
               </p>
             </div>
           </div>
           <div className="boss-table__cell">
-            <div class="boss-table__info">
-              <p class="boss-table__label">Work Venues</p>
-              <p class="boss-table__text">
-                <a href="#" class="boss-table__link">
+            <div className="boss-table__info">
+              <p className="boss-table__label">Work Venues</p>
+              <p className="boss-table__text">
+                <Link to="" className="boss-table__link">
                   {this.props.member.workVenues.join(', ')}
-                </a>
+                </Link>
               </p>
             </div>
           </div>

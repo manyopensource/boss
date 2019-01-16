@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Filter from './Filter';
 
 class Dashboard extends Component {
@@ -16,12 +17,12 @@ class Dashboard extends Component {
               </h1>
 
               <div className="boss-page-dashboard__buttons-group">
-                <a
-                  href="#"
+                <Link
+                  to=""
                   className="boss-button boss-button_role_add boss-page-dashboard__button"
                 >
                   Add Staff Members
-                </a>
+                </Link>
               </div>
             </div>
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import FilterForm from './FilterForm';
 
 class Filter extends Component {
@@ -19,7 +20,8 @@ class Filter extends Component {
     return (
       <div className="boss-showdown">
         <div className="boss-dropdown__header">
-          <a
+          <Link
+            to=""
             className={
               this.state.isFilterOpened
                 ? 'boss-dropdown__switch boss-dropdown__switch_role_filter boss-dropdown__switch_state_opened'
@@ -28,7 +30,7 @@ class Filter extends Component {
             onClick={this.handleToggleFilter}
           >
             Filter
-          </a>
+          </Link>
         </div>
         <div
           className={
