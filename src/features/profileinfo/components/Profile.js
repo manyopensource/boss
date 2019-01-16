@@ -9,6 +9,7 @@ class Profile extends Component {
     super(props);
     this.state = {
       membersData: {
+        id: 1,
         fullname: 'John Doe',
         email: 'johndoe@my.com',
         phone: '+123 342 342',
