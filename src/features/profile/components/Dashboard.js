@@ -10,7 +10,7 @@ class Dashboard extends Component {
             <div className="boss-page-dashboard__group">
               <h1 className="boss-page-dashboard__title">Edit Profile</h1>
               <div className="boss-page-dashboard__buttons-group boss-page-dashboard__buttons-group_position_last">
-                <Link className="boss-button boss-button_role_cancel boss-page-dashboard__button">
+                <Link to="/profile/1" className="boss-button boss-button_role_cancel boss-page-dashboard__button">
                   Cancel Editing
                 </Link>
               </div>
