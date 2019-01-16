@@ -14,6 +14,11 @@ class App extends Component {
         <Route exact path="/edit-profile/:page" component={EditProfile} />
         <Route exact path="/staff-members" component={StaffMembers} />
         <Route exact path="/profile/:id" component={Profile} />
+        <Route exact path="/profile/:id/holidays" component={Profile} />
+        <Route exact path="/profile/:id/owed-hours" component={Profile} />
+        <Route exact path="/profile/:id/accessories" component={Profile} />
+        <Route exact path="/profile/:id/shifts" component={Profile} />
+        <Route exact path="/profile/:id/payments" component={Profile} />
       </main>
     );
   }
