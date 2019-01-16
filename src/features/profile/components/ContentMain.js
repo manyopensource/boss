@@ -9,9 +9,9 @@ class ContentMain extends Component {
     return (
       <section className="boss-content-switcher__chapters">
         <Switch>
-          <Route exact path="/employment" component={EmploymentForm} />
-          <Route exact path="/personal" component={PersonalForm} />
-          <Route exact path="/contact" component={ContactForm} />
+          <Route exact path="/edit-profile/employment" component={EmploymentForm} />
+          <Route exact path="/edit-profile/personal" component={PersonalForm} />
+          <Route exact path="/edit-profile/contact" component={ContactForm} />
         </Switch>
       </section>
     );

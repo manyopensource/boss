@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
-import FormErrorMessage from './FormErrorMessage';
+import FormErrorMessage from './../../FormErrorMessage';
 import FormFieldRadio from './FormFieldRadio';
 
 class PollBox extends Component {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Dashboard extends Component {
   render() {
@@ -9,12 +10,9 @@ class Dashboard extends Component {
             <div className="boss-page-dashboard__group">
               <h1 className="boss-page-dashboard__title">Edit Profile</h1>
               <div className="boss-page-dashboard__buttons-group boss-page-dashboard__buttons-group_position_last">
-                <a
-                  href="#"
-                  className="boss-button boss-button_role_cancel boss-page-dashboard__button"
-                >
+                <Link className="boss-button boss-button_role_cancel boss-page-dashboard__button">
                   Cancel Editing
-                </a>
+                </Link>
               </div>
             </div>
           </div>
