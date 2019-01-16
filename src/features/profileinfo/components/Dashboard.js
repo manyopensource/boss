@@ -65,13 +65,13 @@ class Dashboard extends Component {
               </div>
               <div className="boss-page-dashboard__buttons-group">
                 <Link
-                  to=""
+                  to="/edit-profile"
                   className="boss-button boss-button_role_edit boss-page-dashboard__button"
                 >
                   Edit Profile
                 </Link>
                 <Link
-                  to=""
+                  to="/disable-staff-member"
                   className="boss-button boss-button_role_block boss-page-dashboard__button"
                 >
                   Disable Staff Member
@@ -81,37 +81,37 @@ class Dashboard extends Component {
 
             <div className="boss-page-dashboard__switches">
               <Link
-                to=""
+                to={`/profile/${this.props.membersData.id}`}
                 className="boss-button boss-button_type_small boss-button_role_profile boss-button_state_active boss-page-dashboard__switch"
               >
                 Profile
               </Link>
               <Link
-                to=""
+                to={`/profile/${this.props.membersData.id}/holidays`}
                 className="boss-button boss-button_type_small boss-button_role_holidays boss-page-dashboard__switch"
               >
                 Holidays
               </Link>
               <Link
-                to=""
+                to={`/profile/${this.props.membersData.id}/owed-hours`}
                 className="boss-button boss-button_type_small boss-button_role_timelog boss-page-dashboard__switch"
               >
                 Owed hours
               </Link>
               <Link
-                to=""
+                to={`/profile/${this.props.membersData.id}/accessories`}
                 className="boss-button boss-button_type_small boss-button_role_accessories boss-page-dashboard__switch"
               >
                 Accessories
               </Link>
               <Link
-                to=""
+                to={`/profile/${this.props.membersData.id}/shifts`}
                 className="boss-button boss-button_type_small boss-button_role_shifts boss-page-dashboard__switch"
               >
                 Shifts
               </Link>
               <Link
-                to=""
+                to={`/profile/${this.props.membersData.id}/payments`}
                 className="boss-button boss-button_type_small boss-button_role_payments boss-page-dashboard__switch"
               >
                 Payments
