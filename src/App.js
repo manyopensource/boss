@@ -29,7 +29,7 @@ class App extends Component {
           <Route exact path="/staff-members" component={StaffMembers} />
           <Route exact path="/staff-member/:id" component={Profile} />
           <Route exact path="/staff-member/:id/:page" component={Profile} />
-          {/* <Redirect exact from="/" to="/staff-members" /> */}
+          <Redirect exact from="/" to="/staff-members" />
           <Route path="*" component={NotFound} />
         </Switch>
       </main>
