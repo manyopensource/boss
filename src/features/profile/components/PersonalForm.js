@@ -15,8 +15,8 @@ function onSubmit(values) {
 class PersonalForm extends Component {
   render() {
     const options = [
-      { value: 'm', label: 'Masculine' },
-      { value: 'f', label: 'Feminine' },
+      { value: 'm', label: 'Male' },
+      { value: 'f', label: 'Female' },
       { value: 'lgbt', label: 'LGBT' }
     ];
 
