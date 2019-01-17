@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+// import moment from 'moment';
 import { Link } from 'react-router-dom';
-import Dates from './../../../utils/dates';
+// import Dates from './../../../utils/dates';
 
 class TableRow extends Component {
   render() {
@@ -35,10 +35,13 @@ class TableRow extends Component {
         <div className="boss-table__row">
           <div className="boss-table__cell">
             <div className="boss-table__image">
-              <Link to={`/staff-member/${this.props.member.id}`} className="boss-table__link">
+              <Link
+                to={`/staff-member/${this.props.member.id}`}
+                className="boss-table__link"
+              >
                 <div className="boss-avatar boss-avatar_type_combined">
                   <img
-                    src={require('./../../../imgs/' + this.props.member.pic)}
+                    src={'https://purrweb-internship.herokuapp.com' + this.props.member.avatarUrl}
                     className="boss-avatar__image"
                     alt=""
                   />
@@ -50,8 +53,13 @@ class TableRow extends Component {
             <div className="boss-table__info">
               <p className="boss-table__label">Name</p>
               <p className="boss-table__text">
-                <Link to={`/staff-member/${this.props.member.id}`} className="boss-table__link">
-                  {this.props.member.name}
+                <Link
+                  to={`/staff-member/${this.props.member.id}`}
+                  className="boss-table__link"
+                >
+                  {this.props.member.firstName +
+                    ' ' +
+                    this.props.member.surname}
                 </Link>
               </p>
             </div>
@@ -60,8 +68,12 @@ class TableRow extends Component {
             <div className="boss-table__info">
               <p className="boss-table__label">Modified</p>
               <p className="boss-table__text">
-                <Link to={`/staff-member/${this.props.member.id}`} className="boss-table__link">
-                  {moment(this.props.member.modifiedAt, Dates.commonDateFormat).format(Dates.commonDateFormat)}
+                <Link
+                  to={`/staff-member/${this.props.member.id}`}
+                  className="boss-table__link"
+                >
+                  {/* {moment(this.props.member.modifiedAt, Dates.commonDateFormat).format(Dates.commonDateFormat)} */}
+                  11:00 Fri 11/18/2016
                 </Link>
               </p>
             </div>
@@ -72,14 +84,18 @@ class TableRow extends Component {
               <p className="boss-table__text">
                 <button
                   className={`boss-button boss-button_type_small boss-button_type_no-behavior${
-                    this.props.member.status === 'Enabled'
+                    this.props.member.status === 'enabled'
                       ? ' boss-button_role_enabled'
-                      : this.props.member.status === 'Disabled'
+                      : this.props.member.status === 'disabled'
                       ? ' boss-button_role_disabled'
                       : null
                   }`}
                 >
-                  {this.props.member.status}
+                  {this.props.member.status === 'enabled'
+                    ? 'Enabled'
+                    : this.props.member.status === 'disabled'
+                    ? 'Disabled'
+                    : null}
                 </button>
               </p>
             </div>
@@ -88,8 +104,11 @@ class TableRow extends Component {
             <div className="boss-table__info">
               <p className="boss-table__label">Type</p>
               <p className="boss-table__text">
-                <Link to={`/staff-member/${this.props.member.id}`} className="boss-table__link">
-                  {this.props.member.type}
+                <Link
+                  to={`/staff-member/${this.props.member.id}`}
+                  className="boss-table__link"
+                >
+                  {this.props.member.staffType.name}
                 </Link>
               </p>
             </div>
@@ -98,8 +117,13 @@ class TableRow extends Component {
             <div className="boss-table__info">
               <p className="boss-table__label">Master Venue</p>
               <p className="boss-table__text">
-                <Link to={`/staff-member/${this.props.member.id}`} className="boss-table__link">
-                  {this.props.member.masterVenue}
+                <Link
+                  to={`/staff-member/${this.props.member.id}`}
+                  className="boss-table__link"
+                >
+                  {this.props.member.masterVenue
+                    ? this.props.member.masterVenue.name
+                    : 'Blue'}
                 </Link>
               </p>
             </div>
@@ -108,8 +132,12 @@ class TableRow extends Component {
             <div className="boss-table__info">
               <p className="boss-table__label">Work Venues</p>
               <p className="boss-table__text">
-                <Link to={`/staff-member/${this.props.member.id}`} className="boss-table__link">
-                  {this.props.member.workVenues.join(', ')}
+                <Link
+                  to={`/staff-member/${this.props.member.id}`}
+                  className="boss-table__link"
+                >
+                  {/* {this.props.member.workVenues.join(', ')} */}
+                  Green, McCooley's
                 </Link>
               </p>
             </div>
