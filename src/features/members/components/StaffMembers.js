@@ -3,38 +3,40 @@ import Dashboard from './Dashboard';
 import Content from './../../Content';
 import Table from './Table';
 import TableRow from './TableRow';
+import { http } from './../../../utils/HttpService';
 
 class StaffMembers extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoaded: false,
+      staffMembers: null,
+      staffTypes: null,
+      venues: null
+    };
+  }
+
+  componentDidMount() {
+    http.getStaffMembers().then((result) => {
+      this.setState({
+        isLoaded: true,
+        staffMembers: result.data.staffMembers,
+        staffTypes: result.data.staffTypes,
+        venues: result.data.venues
+      });
+    });
+  }
+
   render() {
-    const members = [
-      {
-        id: 1,
-        pic: 'default.jpeg',
-        name: 'John Doe',
-        modifiedAt: '01/15/2019',
-        status: 'Enabled',
-        type: 'Manager',
-        masterVenue: 'Black',
-        workVenues: ['Mint Green', "McCooley's"]
-      },
-      {
-        id: 2,
-        pic: 'default.jpeg',
-        name: 'Brian Smith',
-        modifiedAt: '01/15/2019',
-        status: 'Disabled',
-        type: 'Manager',
-        masterVenue: 'Brooklyn Mixer',
-        workVenues: ['Black', "McCooley's"]
-      }
-    ];
     return (
       <>
         <Dashboard />
         <Content>
           <Table>
             <TableRow isHeader={true} />
-            {members.map(member => {
+            {this.state.isLoaded && this.state.staffMembers.map(member => {
+              member.staffType = this.state.staffTypes.find(type => type.id === member.staffTypeId);
+              member.masterVenue = this.state.venues.find(venue => venue.id === member.masterVenueId);
               return <TableRow key={member.id} member={member} />;
             })}
           </Table>
