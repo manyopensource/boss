@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import FilterForm from './FilterForm';
 
 class Filter extends Component {
@@ -37,7 +36,6 @@ class Filter extends Component {
               ? 'boss-dropdown__content boss-dropdown__content_state_opened'
               : 'boss-dropdown__content'
           }
-          // style={{ display: 'none' }}
         >
           <div className="boss-dropdown__content-inner">
             <FilterForm />
