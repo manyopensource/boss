@@ -20,8 +20,7 @@ class Filter extends Component {
     return (
       <div className="boss-showdown">
         <div className="boss-dropdown__header">
-          <Link
-            to=""
+          <div
             className={
               this.state.isFilterOpened
                 ? 'boss-dropdown__switch boss-dropdown__switch_role_filter boss-dropdown__switch_state_opened'
@@ -30,7 +29,7 @@ class Filter extends Component {
             onClick={this.handleToggleFilter}
           >
             Filter
-          </Link>
+          </div>
         </div>
         <div
           className={
