@@ -35,6 +35,11 @@ class Api {
   getStaffMembers() {
     return this.client.get(STAFF_MEMBERS_PATH);
   }
+
+  // staff member
+  getStaffMember(memberId) {
+    return this.client.get(`${STAFF_MEMBERS_PATH}/${memberId}`);
+  }
 }
 
 export const http = new Api();
