@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Dashboard extends Component {
+  handleOnClick = () => {
+    this.props.history.push(`/staff-member/${this.props.memberID}`);
+  };
+
   render() {
     return (
       <div className="boss-page-main__dashboard">
@@ -10,9 +14,12 @@ class Dashboard extends Component {
             <div className="boss-page-dashboard__group">
               <h1 className="boss-page-dashboard__title">Edit Profile</h1>
               <div className="boss-page-dashboard__buttons-group boss-page-dashboard__buttons-group_position_last">
-                <Link to="/profile/1" className="boss-button boss-button_role_cancel boss-page-dashboard__button">
+                <div
+                  className="boss-button boss-button_role_cancel boss-page-dashboard__button"
+                  onClick={this.handleOnClick}
+                >
                   Cancel Editing
-                </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -22,4 +29,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default withRouter(Dashboard);
