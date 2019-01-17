@@ -31,7 +31,7 @@ class EditProfile extends Component {
   render() {
     return (
       <>
-        <Dashboard />
+        <Dashboard memberID={this.props.match.params.id} />
         <Content>
           <Switcher>
             <ContentLeft>
@@ -50,12 +50,6 @@ class EditProfile extends Component {
                   );
                 })}
               </nav>
-              {/* <Nav
-                links={this.state.links}
-                activeChapter={this.state.activeChapter}
-                setActiveChapter={this.onSetActiveChapter}
-                memberId={this.props.match.params.id}
-              /> */}
             </ContentLeft>
             <ContentMain chapter={this.state.activeChapter} />
           </Switcher>
