@@ -61,9 +61,7 @@ class TableRow extends Component {
               <p className="boss-table__label">Modified</p>
               <p className="boss-table__text">
                 <Link to={`/staff-member/${this.props.member.id}`} className="boss-table__link">
-                  {moment(this.props.member.modifiedAt).format(
-                    Dates.commonDateFormat
-                  )}
+                  {moment(this.props.member.modifiedAt, Dates.commonDateFormat).format(Dates.commonDateFormat)}
                 </Link>
               </p>
             </div>
