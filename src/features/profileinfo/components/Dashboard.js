@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 class Dashboard extends Component {
   render() {
@@ -65,57 +65,70 @@ class Dashboard extends Component {
               </div>
               <div className="boss-page-dashboard__buttons-group">
                 <Link
-                  to="/edit-profile"
+                  to={`/staff-member/${this.props.memberId}/edit`}
                   className="boss-button boss-button_role_edit boss-page-dashboard__button"
                 >
                   Edit Profile
                 </Link>
                 <Link
-                  to="/disable-staff-member"
+                  to={`/staff-member/${
+                    this.props.membersData.id
+                  }/disable-staff-member`}
                   className="boss-button boss-button_role_block boss-page-dashboard__button"
                 >
                   Disable Staff Member
                 </Link>
               </div>
             </div>
-
             <div className="boss-page-dashboard__switches">
-              <Link
-                to={`/profile/${this.props.membersData.id}`}
-                className="boss-button boss-button_type_small boss-button_role_profile boss-button_state_active boss-page-dashboard__switch"
+              <NavLink
+                exact
+                to={`/staff-member/${this.props.memberId}`}
+                className="boss-button boss-button_type_small boss-button_role_profile boss-page-dashboard__switch"
+                activeClassName="boss-button_state_active"
               >
                 Profile
-              </Link>
-              <Link
-                to={`/profile/${this.props.membersData.id}/holidays`}
+              </NavLink>
+              <NavLink
+                exact
+                to={`/staff-member/${this.props.memberId}/holidays`}
                 className="boss-button boss-button_type_small boss-button_role_holidays boss-page-dashboard__switch"
+                activeClassName="boss-button_state_active"
               >
                 Holidays
-              </Link>
-              <Link
-                to={`/profile/${this.props.membersData.id}/owed-hours`}
+              </NavLink>
+              <NavLink
+                exact
+                to={`/staff-member/${this.props.memberId}/owed-hours`}
                 className="boss-button boss-button_type_small boss-button_role_timelog boss-page-dashboard__switch"
+                activeClassName="boss-button_state_active"
               >
                 Owed hours
-              </Link>
-              <Link
-                to={`/profile/${this.props.membersData.id}/accessories`}
+              </NavLink>
+              <NavLink
+                exact
+                to={`/staff-member/${this.props.memberId}/accessories`}
                 className="boss-button boss-button_type_small boss-button_role_accessories boss-page-dashboard__switch"
+                activeClassName="boss-button_state_active"
               >
                 Accessories
-              </Link>
-              <Link
-                to={`/profile/${this.props.membersData.id}/shifts`}
+              </NavLink>
+              <NavLink
+                exact
+                to={`/staff-member/${this.props.memberId}/shifts`}
                 className="boss-button boss-button_type_small boss-button_role_shifts boss-page-dashboard__switch"
+                activeClassName="boss-button_state_active"
               >
                 Shifts
-              </Link>
-              <Link
-                to={`/profile/${this.props.membersData.id}/payments`}
+              </NavLink>
+              <NavLink
+                exact
+                to={`/staff-member/${this.props.memberId}/payments`}
                 className="boss-button boss-button_type_small boss-button_role_payments boss-page-dashboard__switch"
+                activeClassName="boss-button_state_active"
               >
                 Payments
-              </Link>
+              </NavLink>
             </div>
           </div>
         </div>
