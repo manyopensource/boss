@@ -35,7 +35,7 @@ class TableRow extends Component {
         <div className="boss-table__row">
           <div className="boss-table__cell">
             <div className="boss-table__image">
-              <Link to={`/profile/${this.props.member.id}`} className="boss-table__link">
+              <Link to={`/staff-member/${this.props.member.id}`} className="boss-table__link">
                 <div className="boss-avatar boss-avatar_type_combined">
                   <img
                     src={require('./../../../imgs/' + this.props.member.pic)}
@@ -50,7 +50,7 @@ class TableRow extends Component {
             <div className="boss-table__info">
               <p className="boss-table__label">Name</p>
               <p className="boss-table__text">
-                <Link to={`/profile/${this.props.member.id}`} className="boss-table__link">
+                <Link to={`/staff-member/${this.props.member.id}`} className="boss-table__link">
                   {this.props.member.name}
                 </Link>
               </p>
@@ -60,7 +60,7 @@ class TableRow extends Component {
             <div className="boss-table__info">
               <p className="boss-table__label">Modified</p>
               <p className="boss-table__text">
-                <Link to={`/profile/${this.props.member.id}`} className="boss-table__link">
+                <Link to={`/staff-member/${this.props.member.id}`} className="boss-table__link">
                   {moment(this.props.member.modifiedAt).format(
                     Dates.commonDateFormat
                   )}
@@ -90,7 +90,7 @@ class TableRow extends Component {
             <div className="boss-table__info">
               <p className="boss-table__label">Type</p>
               <p className="boss-table__text">
-                <Link to={`/profile/${this.props.member.id}`} className="boss-table__link">
+                <Link to={`/staff-member/${this.props.member.id}`} className="boss-table__link">
                   {this.props.member.type}
                 </Link>
               </p>
@@ -100,7 +100,7 @@ class TableRow extends Component {
             <div className="boss-table__info">
               <p className="boss-table__label">Master Venue</p>
               <p className="boss-table__text">
-                <Link to={`/profile/${this.props.member.id}`} className="boss-table__link">
+                <Link to={`/staff-member/${this.props.member.id}`} className="boss-table__link">
                   {this.props.member.masterVenue}
                 </Link>
               </p>
@@ -110,7 +110,7 @@ class TableRow extends Component {
             <div className="boss-table__info">
               <p className="boss-table__label">Work Venues</p>
               <p className="boss-table__text">
-                <Link to={`/profile/${this.props.member.id}`} className="boss-table__link">
+                <Link to={`/staff-member/${this.props.member.id}`} className="boss-table__link">
                   {this.props.member.workVenues.join(', ')}
                 </Link>
               </p>
@@ -123,7 +123,7 @@ class TableRow extends Component {
 }
 
 TableRow.propTypes = {
-  member: PropTypes.object.isRequired,
+  member: PropTypes.object,
   isHeader: PropTypes.bool
 };
 
