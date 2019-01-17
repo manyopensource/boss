@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import Content from './../../Content';
 import Flow from './Flow';
-import Island from './Island';
+import Holidays from './Holidays';
+import OwedHours from './OwedHours';
+import Accessories from './Accessories';
+import Shifts from './Shifts';
+import Payments from './Payments';
 
 class Profile extends Component {
   constructor(props) {
@@ -41,7 +46,7 @@ class Profile extends Component {
         contactDetails: {
           'Email Address': 'johndoe@my.com',
           'Phone Number': '+123 342 342',
-          'Address': {
+          Address: {
             street: '907 Charisse Junction',
             city: 'New Jersey',
             country: 'Monaco',
@@ -70,38 +75,19 @@ class Profile extends Component {
   }
 
   render() {
+    console.log(this.props.match.params.id)
     return (
       <>
-        <Dashboard membersData={this.state.membersData} />
+        <Dashboard membersData={this.state.membersData} memberId={this.props.match.params.id} />
         <Content>
-          <Flow>
-            <Island
-              index={1}
-              garbageName="Employment Details"
-              garbage={this.state.membersData.employmentDetails}
-            />
-            <Island
-              index={2}
-              garbageName="Account Details"
-              garbage={this.state.membersData.accountDetails}
-            />
-            <Island
-              index={3}
-              garbageName="Personal Details"
-              garbage={this.state.membersData.personalDetails}
-            />
-            <Island
-              index={4}
-              garbageName="Contact Details"
-              garbage={this.state.membersData.contactDetails}
-            />
-            <Island
-              index={5}
-              garbageName="Mobile Apps"
-              garbage={this.state.membersData.mobileApps}
-            />
-            <Island index={6} garbageName="Revisions History" garbage={this.state.membersData.revisionsHistory} />
-          </Flow>
+          <Switch>
+            <Route exact path="/staff-member/:id" render={() => <Flow membersData={this.state.membersData} />} />
+            <Route exact path="/staff-member/:id/holidays" component={Holidays} />
+            <Route exact path="/staff-member/:id/owed-hours" component={OwedHours} />
+            <Route exact path="/staff-member/:id/accessories" component={Accessories} />
+            <Route exact path="/staff-member/:id/shifts" component={Shifts} />
+            <Route exact path="/staff-member/:id/payments" component={Payments} />
+          </Switch>
         </Content>
       </>
     );
