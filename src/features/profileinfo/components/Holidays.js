@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class Holidays extends Component {
   render() {
-    console.log('holidays : ', this.props.match.params.id)
     return (
       <section className="boss-board">
         <header className="boss-board__header">

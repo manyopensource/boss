@@ -75,7 +75,6 @@ class Profile extends Component {
   }
 
   render() {
-    console.log(this.props.match.params.id)
     return (
       <>
         <Dashboard membersData={this.state.membersData} memberId={this.props.match.params.id} />
