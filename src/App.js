@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import EditProfile from './features/profile/components/EditProfile';
+import EditProfile from './features/staffMemberEdit/components/EditProfile';
 import StaffMembers from './features/staffMembers/components/StaffMembers';
 import Profile from './features/staffMember/components/Profile';
 import NotFound from './features/NotFound';
