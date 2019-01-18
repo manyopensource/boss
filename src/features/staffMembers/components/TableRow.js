@@ -70,7 +70,7 @@ class TableRow extends Component {
                   to={`/staff-member/${this.props.member.id}`}
                   className="boss-table__link"
                 >
-                  11:00 Fri 11/18/2016
+                  N / A
                 </Link>
               </p>
             </div>
@@ -120,7 +120,7 @@ class TableRow extends Component {
                 >
                   {this.props.member.masterVenue
                     ? this.props.member.masterVenue.name
-                    : 'Blue'}
+                    : 'N / A'}
                 </Link>
               </p>
             </div>
@@ -133,7 +133,7 @@ class TableRow extends Component {
                   to={`/staff-member/${this.props.member.id}`}
                   className="boss-table__link"
                 >
-                  Green, McCooley's
+                  N / A
                 </Link>
               </p>
             </div>

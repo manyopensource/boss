@@ -34,11 +34,11 @@ class StaffMembers extends Component {
         <Content>
           <Table>
             <TableRow isHeader={true} />
-            {this.state.isLoaded && this.state.staffMembers.map(member => {
+            {this.state.isLoaded ? this.state.staffMembers.map(member => {
               member.staffType = this.state.staffTypes.find(type => type.id === member.staffTypeId);
               member.masterVenue = this.state.venues.find(venue => venue.id === member.masterVenueId);
               return <TableRow key={member.id} member={member} />;
-            })}
+            }) : ' Loading'}
           </Table>
         </Content>
       </>
