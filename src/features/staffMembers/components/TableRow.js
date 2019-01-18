@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import moment from 'moment';
 import { Link } from 'react-router-dom';
-// import Dates from './../../../utils/dates';
 
 class TableRow extends Component {
   render() {
@@ -72,7 +70,6 @@ class TableRow extends Component {
                   to={`/staff-member/${this.props.member.id}`}
                   className="boss-table__link"
                 >
-                  {/* {moment(this.props.member.modifiedAt, Dates.commonDateFormat).format(Dates.commonDateFormat)} */}
                   11:00 Fri 11/18/2016
                 </Link>
               </p>
@@ -136,7 +133,6 @@ class TableRow extends Component {
                   to={`/staff-member/${this.props.member.id}`}
                   className="boss-table__link"
                 >
-                  {/* {this.props.member.workVenues.join(', ')} */}
                   Green, McCooley's
                 </Link>
               </p>
