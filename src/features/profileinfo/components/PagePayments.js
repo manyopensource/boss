@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Payments extends Component {
+class PagePayments extends Component {
   render() {
     return (
       <section className="boss-board">
@@ -12,4 +12,4 @@ class Payments extends Component {
   }
 }
 
-export default Payments;
+export default PagePayments;
