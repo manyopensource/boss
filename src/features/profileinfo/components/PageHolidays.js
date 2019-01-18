@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Holidays extends Component {
+class PageHolidays extends Component {
   render() {
     return (
       <section className="boss-board">
@@ -15,4 +15,4 @@ class Holidays extends Component {
   }
 }
 
-export default Holidays;
+export default PageHolidays;
