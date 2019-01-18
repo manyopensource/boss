@@ -4,7 +4,7 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import EditProfile from './features/profile/components/EditProfile';
 import StaffMembers from './features/staffMembers/components/StaffMembers';
-import Profile from './features/profileinfo/components/Profile';
+import Profile from './features/staffMember/components/Profile';
 import NotFound from './features/NotFound';
 
 class App extends Component {
