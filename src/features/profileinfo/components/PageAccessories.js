@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Accessories extends Component {
+class PageAccessories extends Component {
   render() {
     return (
       <section className="boss-board">
@@ -15,4 +15,4 @@ class Accessories extends Component {
   }
 }
 
-export default Accessories;
+export default PageAccessories;
