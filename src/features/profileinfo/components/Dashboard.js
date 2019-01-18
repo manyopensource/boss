@@ -3,6 +3,10 @@ import { Link, NavLink } from 'react-router-dom';
 
 class Dashboard extends Component {
   render() {
+    const otherVenues = this.props.venues.filter(venue =>
+      this.props.staffMember.otherVenueIds.includes(venue.id)
+    );
+    const otherVenuesNames = otherVenues.map(venue => venue.name);
     return (
       <div className="boss-page-main__dashboard">
         <div className="boss-page-main__inner">
@@ -14,8 +18,15 @@ class Dashboard extends Component {
                     <div className="boss-user-summary__avatar">
                       <div className="boss-user-summary__avatar-inner">
                         <img
-                          src={require('./../../../imgs/default.jpeg')}
-                          alt={this.props.membersData.fullname}
+                          src={
+                            'https://purrweb-internship.herokuapp.com' +
+                            this.props.staffMember.avatarUrl
+                          }
+                          alt={
+                            this.props.staffMember.firstName +
+                            ' ' +
+                            this.props.staffMember.surname
+                          }
                           className="boss-user-summary__pic"
                         />
                       </div>
@@ -30,7 +41,9 @@ class Dashboard extends Component {
                   <div className="boss-user-summary__content">
                     <div className="boss-user-summary__header">
                       <h2 className="boss-user-summary__name">
-                        {this.props.membersData.fullname}
+                        {this.props.staffMember.firstName +
+                          ' ' +
+                          this.props.staffMember.surname}
                       </h2>
                       <span
                         className="boss-button boss-button_type_small boss-button_type_no-behavior boss-user-summary__label"
@@ -41,22 +54,22 @@ class Dashboard extends Component {
                     </div>
                     <div className="boss-user-summary__contacts">
                       <a
-                        href={`mailto:${this.props.membersData.email}`}
+                        href={`mailto:${this.props.staffMember.email}`}
                         className="boss-user-summary__link boss-user-summary__link_role_email"
                       >
-                        {this.props.membersData.email}
+                        {this.props.staffMember.email}
                       </a>
                       <a
-                        href={`tel:${this.props.membersData.phone}`}
+                        href={`tel:${this.props.staffMember.phoneNumber}`}
                         className="boss-user-summary__link boss-user-summary__link_role_phone"
                       >
-                        {this.props.membersData.phone}
+                        {this.props.staffMember.phoneNumber}
                       </a>
                     </div>
                     <ul className="boss-user-summary__review-list">
                       <li className="boss-user-summary__review-item boss-user-summary__review-item_role_venue">
                         <span className="boss-user-summary__review-marked">
-                          {this.props.membersData.venue}
+                          {otherVenuesNames.slice(0, 4).join(', ')}
                         </span>
                       </li>
                     </ul>
@@ -65,14 +78,14 @@ class Dashboard extends Component {
               </div>
               <div className="boss-page-dashboard__buttons-group">
                 <Link
-                  to={`/staff-member/${this.props.memberId}/edit`}
+                  to={`/staff-member/${this.props.staffMember.id}/edit`}
                   className="boss-button boss-button_role_edit boss-page-dashboard__button"
                 >
                   Edit Profile
                 </Link>
                 <Link
                   to={`/staff-member/${
-                    this.props.membersData.id
+                    this.props.staffMember.id
                   }/disable-staff-member`}
                   className="boss-button boss-button_role_block boss-page-dashboard__button"
                 >
@@ -83,7 +96,7 @@ class Dashboard extends Component {
             <div className="boss-page-dashboard__switches">
               <NavLink
                 exact
-                to={`/staff-member/${this.props.memberId}`}
+                to={`/staff-member/${this.props.staffMember.id}`}
                 className="boss-button boss-button_type_small boss-button_role_profile boss-page-dashboard__switch"
                 activeClassName="boss-button_state_active"
               >
@@ -91,7 +104,7 @@ class Dashboard extends Component {
               </NavLink>
               <NavLink
                 exact
-                to={`/staff-member/${this.props.memberId}/holidays`}
+                to={`/staff-member/${this.props.staffMember.id}/holidays`}
                 className="boss-button boss-button_type_small boss-button_role_holidays boss-page-dashboard__switch"
                 activeClassName="boss-button_state_active"
               >
@@ -99,7 +112,7 @@ class Dashboard extends Component {
               </NavLink>
               <NavLink
                 exact
-                to={`/staff-member/${this.props.memberId}/owed-hours`}
+                to={`/staff-member/${this.props.staffMember.id}/owed-hours`}
                 className="boss-button boss-button_type_small boss-button_role_timelog boss-page-dashboard__switch"
                 activeClassName="boss-button_state_active"
               >
@@ -107,7 +120,7 @@ class Dashboard extends Component {
               </NavLink>
               <NavLink
                 exact
-                to={`/staff-member/${this.props.memberId}/accessories`}
+                to={`/staff-member/${this.props.staffMember.id}/accessories`}
                 className="boss-button boss-button_type_small boss-button_role_accessories boss-page-dashboard__switch"
                 activeClassName="boss-button_state_active"
               >
@@ -115,7 +128,7 @@ class Dashboard extends Component {
               </NavLink>
               <NavLink
                 exact
-                to={`/staff-member/${this.props.memberId}/shifts`}
+                to={`/staff-member/${this.props.staffMember.id}/shifts`}
                 className="boss-button boss-button_type_small boss-button_role_shifts boss-page-dashboard__switch"
                 activeClassName="boss-button_state_active"
               >
@@ -123,7 +136,7 @@ class Dashboard extends Component {
               </NavLink>
               <NavLink
                 exact
-                to={`/staff-member/${this.props.memberId}/payments`}
+                to={`/staff-member/${this.props.staffMember.id}/payments`}
                 className="boss-button boss-button_type_small boss-button_role_payments boss-page-dashboard__switch"
                 activeClassName="boss-button_state_active"
               >
