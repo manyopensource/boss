@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Shifts extends Component {
+class PageShifts extends Component {
   render() {
     return (
       <section className="boss-board">
@@ -12,4 +12,4 @@ class Shifts extends Component {
   }
 }
 
-export default Shifts;
+export default PageShifts;
