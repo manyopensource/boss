@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class OwedHours extends Component {
+class PageOwedHours extends Component {
   render() {
     return (
       <section className="boss-board">
@@ -15,4 +15,4 @@ class OwedHours extends Component {
   }
 }
 
-export default OwedHours;
+export default PageOwedHours;
