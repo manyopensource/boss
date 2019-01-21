@@ -1,30 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Dashboard from './Dashboard';
 import Content from './../../Content';
 import Table from './Table';
 import TableRow from './TableRow';
-import { http } from './../../../utils/HttpService';
 
 class StaffMembers extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoaded: false,
-      staffMembers: null,
-      staffTypes: null,
-      venues: null
-    };
-  }
-
   componentDidMount() {
-    http.getStaffMembers().then((result) => {
-      this.setState({
-        isLoaded: true,
-        staffMembers: result.data.staffMembers,
-        staffTypes: result.data.staffTypes,
-        venues: result.data.venues
-      });
-    });
+    this.props.loadStaffMembers();
   }
 
   render() {
@@ -33,17 +16,38 @@ class StaffMembers extends Component {
         <Dashboard />
         <Content>
           <Table>
-            <TableRow isHeader={true} />
-            {this.state.isLoaded ? this.state.staffMembers.map(member => {
-              member.staffType = this.state.staffTypes.find(type => type.id === member.staffTypeId);
-              member.masterVenue = this.state.venues.find(venue => venue.id === member.masterVenueId);
-              return <TableRow key={member.id} member={member} />;
-            }) : ' Loading'}
+            {!this.props.staffMembers.isLoading
+              ? this.props.staffMembers.data.map(member => {
+                  member.staffType = this.props.staffTypes.data.find(
+                    type => type.id === member.staffTypeId
+                  );
+                  member.masterVenue = this.props.venues.data.find(
+                    venue => venue.id === member.masterVenueId
+                  );
+                  return <TableRow key={member.id} member={member} />;
+                })
+              : ' Loading'}
           </Table>
         </Content>
       </>
     );
   }
 }
+
+StaffMembers.propTypes = {
+  loadStaffMembers: PropTypes.func.isRequired,
+  staffMembers: PropTypes.shape({
+    data: PropTypes.array.isRequired,
+    isLoading: PropTypes.bool.isRequired
+  }),
+  staffTypes: PropTypes.shape({
+    data: PropTypes.array.isRequired,
+    isLoading: PropTypes.bool.isRequired
+  }),
+  venues: PropTypes.shape({
+    data: PropTypes.array.isRequired,
+    isLoading: PropTypes.bool.isRequired
+  })
+};
 
 export default StaffMembers;
