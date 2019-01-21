@@ -1,0 +1,1 @@
+export const INIT_OF_DATA = 'INIT_OF_DATA';
