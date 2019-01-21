@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 
 class TableRow extends Component {
   render() {
+    const avatarUrl = this.props.member.avatarUrl
+      ? 'https://purrweb-internship.herokuapp.com' + this.props.member.avatarUrl
+      : null;
     return (
       <div className="boss-table__row">
         <div className="boss-table__cell">
@@ -13,14 +16,7 @@ class TableRow extends Component {
               className="boss-table__link"
             >
               <div className="boss-avatar boss-avatar_type_combined">
-                <img
-                  src={
-                    'https://purrweb-internship.herokuapp.com' +
-                    this.props.member.avatarUrl
-                  }
-                  className="boss-avatar__image"
-                  alt=""
-                />
+                <img src={avatarUrl} className="boss-avatar__image" alt="" />
               </div>
             </Link>
           </div>

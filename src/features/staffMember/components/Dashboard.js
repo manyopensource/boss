@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 
 class Dashboard extends Component {
   render() {
+    const avatarUrl = this.props.staffMember.avatarUrl
+      ? 'https://purrweb-internship.herokuapp.com' +
+        this.props.staffMember.avatarUrl
+      : null;
     const otherVenues = this.props.venues.filter(venue =>
       this.props.staffMember.otherVenueIds.includes(venue.id)
     );
@@ -18,10 +23,7 @@ class Dashboard extends Component {
                     <div className="boss-user-summary__avatar">
                       <div className="boss-user-summary__avatar-inner">
                         <img
-                          src={
-                            'https://purrweb-internship.herokuapp.com' +
-                            this.props.staffMember.avatarUrl
-                          }
+                          src={avatarUrl}
                           alt={
                             this.props.staffMember.firstName +
                             ' ' +
@@ -149,5 +151,18 @@ class Dashboard extends Component {
     );
   }
 }
+
+Dashboard.propTypes = {
+  staffMember: PropTypes.shape({
+    id: PropTypes.number,
+    firstName: PropTypes.string,
+    surname: PropTypes.string,
+    avatarUrl: PropTypes.string,
+    phoneNumber: PropTypes.string,
+    email: PropTypes.string,
+    otherVenueIds: PropTypes.array
+  }),
+  venues: PropTypes.array.isRequired
+};
 
 export default Dashboard;
