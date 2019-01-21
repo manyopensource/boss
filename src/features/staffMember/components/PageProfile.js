@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import InfoEmploymentDetails from './InfoEmploymentDetails';
 import InfoAccountDetails from './InfoAccountDetails';
 import InfoPersonalDetails from './InfoPersonalDetails';
@@ -56,5 +57,13 @@ class PageProfile extends Component {
     );
   }
 }
+
+PageProfile.propTypes = {
+  staffMember: PropTypes.object.isRequired,
+  staffTypes: PropTypes.array.isRequired,
+  venues: PropTypes.array.isRequired,
+  payRates: PropTypes.array.isRequired,
+  genderValues: PropTypes.array.isRequired
+};
 
 export default PageProfile;
