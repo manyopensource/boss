@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Dashboard from './Dashboard';
-import Content from './../../Content';
+import Content from '../../Content';
 import Switcher from './Switcher';
 import ContentLeft from './ContentLeft';
 import ContentMain from './ContentMain';
 
-class EditProfile extends Component {
+class StaffMemberEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -59,4 +59,4 @@ class EditProfile extends Component {
   }
 }
 
-export default EditProfile;
+export default StaffMemberEdit;
