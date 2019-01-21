@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { initData } from './../../../actions';
+import { loadStaffMembers } from './../../../actions';
 import StaffMembers from './../components/StaffMembers';
 
 const mapStateToProps = state => {
@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      initData
+      loadStaffMembers
     },
     dispatch
   );
