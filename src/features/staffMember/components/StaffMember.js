@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Dashboard from './Dashboard';
-import Content from './../../Content';
+import Content from '../../Content';
 import PageProfile from './PageProfile';
 import PageHolidays from './PageHolidays';
 import PageOwedHours from './PageOwedHours';
 import PageAccessories from './PageAccessories';
 import PageShifts from './PageShifts';
 import PagePayments from './PagePayments';
-import { http } from './../../../utils/HttpService';
+import { http } from '../../../utils/HttpService';
 
-class Profile extends Component {
+class StaffMember extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,14 +26,19 @@ class Profile extends Component {
 
   componentDidMount() {
     http.getStaffMember(this.props.match.params.id).then(result => {
-      this.setState({
-        isLoaded: true,
-        staffMember: result.data.staffMember,
-        staffTypes: result.data.staffTypes,
-        venues: result.data.venues,
-        payRates: result.data.payRates,
-        genderValues: result.data.genderValues
-      });
+      this.setState(
+        {
+          isLoaded: true,
+          staffMember: result.data.staffMember,
+          staffTypes: result.data.staffTypes,
+          venues: result.data.venues,
+          payRates: result.data.payRates,
+          genderValues: result.data.genderValues
+        },
+        () => {
+          this.props.initData(result.data);
+        }
+      );
     });
   }
 
@@ -54,11 +60,11 @@ class Profile extends Component {
                 path="/staff-member/:id"
                 render={() => (
                   <PageProfile
-                    staffMember={this.state.staffMember}
-                    staffTypes={this.state.staffTypes}
-                    venues={this.state.venues}
-                    payRates={this.state.payRates}
-                    genderValues={this.state.genderValues}
+                    staffMember={this.props.staffMember}
+                    staffTypes={this.props.staffTypes}
+                    venues={this.props.venues}
+                    payRates={this.props.payRates}
+                    genderValues={this.props.genderValues}
                   />
                 )}
               />
@@ -95,4 +101,13 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+StaffMember.propTypes = {
+  initData: PropTypes.func.isRequired,
+  staffMember: PropTypes.object.isRequired,
+  staffTypes: PropTypes.array.isRequired,
+  venues: PropTypes.array.isRequired,
+  payRates: PropTypes.array.isRequired,
+  genderValues: PropTypes.array.isRequired
+};
+
+export default StaffMember;
