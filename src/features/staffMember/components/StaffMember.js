@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Dashboard from './Dashboard';
 import Content from '../../Content';
@@ -9,6 +9,8 @@ import PageOwedHours from './PageOwedHours';
 import PageAccessories from './PageAccessories';
 import PageShifts from './PageShifts';
 import PagePayments from './PagePayments';
+import StaffMemberEdit from './../../staffMemberEdit/components/StaffMemberEdit';
+import NotFound from './../../NotFound';
 
 class StaffMember extends Component {
   componentDidMount() {
@@ -18,57 +20,74 @@ class StaffMember extends Component {
   render() {
     return (
       !this.props.staffMember.isLoading && (
-        <>
-          <Dashboard
-            staffMember={this.props.staffMember.data}
-            staffTypes={this.props.staffTypes.data}
-            venues={this.props.venues.data}
-            payRates={this.props.payRates.data}
-            genderValues={this.props.genderValues.data}
+        <Switch>
+          <Route
+            exact
+            path="/staff-member/:id/edit"
+            render={props => (
+              <Redirect
+                to={`/staff-member/${props.match.params.id}/edit/employment`}
+              />
+            )}
           />
-          <Content>
-            <Switch>
-              <Route
-                exact
-                path="/staff-member/:id"
-                render={() => (
-                  <PageProfile
-                    staffMember={this.props.staffMember.data}
-                    staffTypes={this.props.staffTypes.data}
-                    venues={this.props.venues.data}
-                    payRates={this.props.payRates.data}
-                    genderValues={this.props.genderValues.data}
-                  />
-                )}
-              />
-              <Route
-                exact
-                path="/staff-member/:id/holidays"
-                component={PageHolidays}
-              />
-              <Route
-                exact
-                path="/staff-member/:id/owed-hours"
-                component={PageOwedHours}
-              />
-              <Route
-                exact
-                path="/staff-member/:id/accessories"
-                component={PageAccessories}
-              />
-              <Route
-                exact
-                path="/staff-member/:id/shifts"
-                component={PageShifts}
-              />
-              <Route
-                exact
-                path="/staff-member/:id/payments"
-                component={PagePayments}
-              />
-            </Switch>
-          </Content>
-        </>
+          <Route
+            exact
+            path="/staff-member/:id/edit/:page"
+            component={StaffMemberEdit}
+          />
+          <>
+            <Dashboard
+              staffMember={this.props.staffMember.data}
+              staffTypes={this.props.staffTypes.data}
+              venues={this.props.venues.data}
+              payRates={this.props.payRates.data}
+              genderValues={this.props.genderValues.data}
+            />
+            <Content>
+              <Switch>
+                <Route
+                  exact
+                  path="/staff-member/:id"
+                  render={() => (
+                    <PageProfile
+                      staffMember={this.props.staffMember.data}
+                      staffTypes={this.props.staffTypes.data}
+                      venues={this.props.venues.data}
+                      payRates={this.props.payRates.data}
+                      genderValues={this.props.genderValues.data}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/staff-member/:id/holidays"
+                  component={PageHolidays}
+                />
+                <Route
+                  exact
+                  path="/staff-member/:id/owed-hours"
+                  component={PageOwedHours}
+                />
+                <Route
+                  exact
+                  path="/staff-member/:id/accessories"
+                  component={PageAccessories}
+                />
+                <Route
+                  exact
+                  path="/staff-member/:id/shifts"
+                  component={PageShifts}
+                />
+                <Route
+                  exact
+                  path="/staff-member/:id/payments"
+                  component={PagePayments}
+                />
+                <Route path="*" component={NotFound} />
+              </Switch>
+            </Content>
+          </>
+        </Switch>
       )
     );
   }
