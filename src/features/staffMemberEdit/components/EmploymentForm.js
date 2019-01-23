@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form } from 'react-final-form';
+import moment from 'moment';
 import Dates from './../../../utils/dates';
 import FormField from './../../FormField';
 import FormFieldSelect from './../../FormFieldSelect';
@@ -15,11 +16,20 @@ function onSubmit(values) {
 
 class EmploymentForm extends Component {
   render() {
-    const options = [
-      { value: 'chocolate', label: 'Chocolate' },
-      { value: 'strawberry', label: 'Strawberry' },
-      { value: 'vanilla', label: 'Vanilla' }
-    ];
+    const venues = this.props.venues.data.map(item => ({
+      label: item.name,
+      value: item.id
+    }));
+
+    const staffTypes = this.props.staffTypes.data.map(item => ({
+      label: item.name,
+      value: item.id
+    }));
+
+    const payRates = this.props.payRates.data.map(item => ({
+      label: item.name,
+      value: item.id
+    }));
 
     const options2 = [
       {
@@ -47,15 +57,23 @@ class EmploymentForm extends Component {
       }
     ];
 
+    let startsAt = moment(
+      this.props.staffMember.data.startsAt,
+      Dates.commonDateFormat
+    );
+    startsAt = startsAt.isValid() ? startsAt : null;
+
     return (
-      <article
-        className="boss-content-switcher__chapter boss-content-switcher__chapter_state_visible"
-      >
+      <article className="boss-content-switcher__chapter boss-content-switcher__chapter_state_visible">
         <header className="boss-content-switcher__header">
           <h2 className="boss-content-switcher__title">Employment Details</h2>
         </header>
         <div className="boss-content-switcher__content">
           <Form
+            initialValues={{
+              ...this.props.staffMember.data,
+              startsAt: startsAt
+            }}
             onSubmit={onSubmit}
             validate={values => {
               const errors = {};
@@ -76,26 +94,33 @@ class EmploymentForm extends Component {
                 onSubmit={handleSubmit}
               >
                 <FormFieldSelect
-                  name="mainVenue"
+                  name="masterVenueId"
                   label="Main Venue"
-                  options={options}
+                  options={venues}
                 />
-                <FormField name="otherVenues" label="Other Venues" />
                 <FormFieldSelect
-                  name="stuffType"
+                  name="otherVenueIds"
+                  label="Other Venues"
+                  options={venues}
+                  multi
+                  removeSelected
+                  required
+                />
+                <FormFieldSelect
+                  name="staffTypeId"
                   label="Stuff Type"
-                  options={options}
+                  options={staffTypes}
                   required
                 />
                 <FormFieldDate name="startsAt" label="Starts at" required />
                 <FormFieldSelect
-                  name="payRate"
+                  name="payRateId"
                   label="Pay rate"
-                  options={options}
+                  options={payRates}
                   required
                 />
-                <FormField name="dayPreference" label="Day Preference" />
-                <FormField name="hoursPreference" label="Hours Preference" />
+                <FormField name="dayPreferenceNote" label="Day Preference" />
+                <FormField name="hoursPreferenceNote" label="Hours Preference" />
                 <FormField
                   name="nationalInsuranceNumber"
                   label="National Insurance Number"

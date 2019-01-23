@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form } from 'react-final-form';
+import moment from 'moment';
 import Dates from './../../../utils/dates';
 import FormField from './../../FormField';
 import FormFieldSelect from './../../FormFieldSelect';
@@ -13,22 +14,34 @@ function onSubmit(values) {
 }
 
 class PersonalForm extends Component {
+  firstLetterUppercase = str => {
+    return str.slice(0, 1).toUpperCase() + str.slice(1, str.length);
+  };
+
   render() {
-    const options = [
-      { value: 'm', label: 'Male' },
-      { value: 'f', label: 'Female' },
-      { value: 'lgbt', label: 'LGBT' }
-    ];
+    const options = this.props.genderValues.data.map(item => ({
+      label: this.firstLetterUppercase(item),
+      value: item
+    }));
+
+
+    let dateOfBirth = moment(
+      this.props.staffMember.data.dateOfBirth,
+      Dates.commonDateFormat
+    );
+    dateOfBirth = dateOfBirth.isValid() ? dateOfBirth : null;
 
     return (
-      <article
-        className="boss-content-switcher__chapter boss-content-switcher__chapter_state_visible"
-      >
+      <article className="boss-content-switcher__chapter boss-content-switcher__chapter_state_visible">
         <header className="boss-content-switcher__header">
           <h2 className="boss-content-switcher__title">Personal Details</h2>
         </header>
         <div className="boss-content-switcher__content">
           <Form
+            initialValues={{
+              ...this.props.staffMember.data,
+              dateOfBirth: dateOfBirth
+            }}
             onSubmit={onSubmit}
             validate={values => {
               const errors = {};

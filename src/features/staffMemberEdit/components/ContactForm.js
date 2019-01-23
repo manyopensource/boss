@@ -9,16 +9,14 @@ function onSubmit(values) {
 class ContactForm extends Component {
   render() {
     return (
-      <article
-        className="boss-content-switcher__chapter boss-content-switcher__chapter_state_visible"
-      >
+      <article className="boss-content-switcher__chapter boss-content-switcher__chapter_state_visible">
         <header className="boss-content-switcher__header">
           <h2 className="boss-content-switcher__title">Contact Details</h2>
         </header>
         <div className="boss-content-switcher__content">
           <Form
+            initialValues={this.props.staffMember.data}
             onSubmit={onSubmit}
-            // validate={validate}
             render={({ handleSubmit, pristine, invalid }) => (
               <form
                 className="boss-form boss-form_page_profile-edit"
