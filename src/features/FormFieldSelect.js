@@ -12,7 +12,10 @@ class FormFieldSelect extends Component {
         render={({ input, meta }) => (
           <div className="boss-form__field">
             <label htmlFor="select-staff-type" className="boss-form__label">
-              <span className="boss-form__label-text">{this.props.label}{this.props.required ? '*' : null}</span>
+              <span className="boss-form__label-text">
+                {this.props.label}
+                {this.props.required ? '*' : null}
+              </span>
             </label>
             <div
               className={
@@ -27,14 +30,22 @@ class FormFieldSelect extends Component {
                 loading={false}
                 clearable={false}
                 rtl={false}
-                onChange={(option) => {input.onChange(option.value)}}
+                onChange={option => {
+                  if (this.props.multi) {
+                    input.onChange(option);
+                  } else {
+                    input.onChange(option.value);
+                  }
+                }}
                 value={input.value}
                 searchable={false}
                 options={this.props.options}
+                multi={this.props.multi}
               />
             </div>
-            {meta.touched &&
-              meta.error && <FormErrorMessage errorMessage={meta.error} />}
+            {meta.touched && meta.error && (
+              <FormErrorMessage errorMessage={meta.error} />
+            )}
           </div>
         )}
       />
@@ -47,6 +58,6 @@ FormFieldSelect.propTypes = {
   label: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
   required: PropTypes.bool
-}
+};
 
 export default FormFieldSelect;
