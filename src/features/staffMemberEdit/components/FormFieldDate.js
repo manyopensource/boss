@@ -25,8 +25,9 @@ class FormFieldDate extends Component {
                 onApply={momentObj => input.onChange(momentObj)}
               />
             </div>
-            {meta.touched &&
-              meta.error && <FormErrorMessage errorMessage={meta.error} />}
+            {meta.touched && meta.error && (
+              <FormErrorMessage errorMessage={meta.error} />
+            )}
           </div>
         )}
       />
@@ -38,6 +39,6 @@ FormFieldDate.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   required: PropTypes.bool
-}
+};
 
 export default FormFieldDate;
