@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import EmploymentForm from './EmploymentForm';
-import PersonalForm from './PersonalForm';
-import ContactForm from './ContactForm';
+import EmploymentForm from './../containers/EmploymentForm';
+import PersonalForm from './../containers/PersonalForm';
+import ContactForm from './../containers/ContactForm';
 
 class ContentMain extends Component {
   render() {
