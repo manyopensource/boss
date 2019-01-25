@@ -5,14 +5,16 @@ import StaffMembers from './../components/StaffMembers';
 import {
   getStaffMembers,
   getStaffTypes,
-  getVenues
+  getVenues,
+  getStaffMembersData
 } from './../../../selectors';
 
 const mapStateToProps = state => {
   return {
     staffMembers: getStaffMembers(state),
     staffTypes: getStaffTypes(state),
-    venues: getVenues(state)
+    venues: getVenues(state),
+    staffMembersData: getStaffMembersData(state)
   };
 };
 

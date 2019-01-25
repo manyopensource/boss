@@ -28,13 +28,7 @@ class StaffMembers extends Component {
         <Content>
           <Table>
             {this.state.isLoaded
-              ? this.props.staffMembers.data.map(member => {
-                  member.staffType = this.props.staffTypes.data.find(
-                    type => type.id === member.staffTypeId
-                  );
-                  member.masterVenue = this.props.venues.data.find(
-                    venue => venue.id === member.masterVenueId
-                  );
+              ? this.props.staffMembersData.map(member => {
                   return <TableRow key={member.id} member={member} />;
                 })
               : ' Loading'}
