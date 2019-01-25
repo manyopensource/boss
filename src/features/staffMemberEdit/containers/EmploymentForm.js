@@ -6,7 +6,10 @@ import {
   getStaffMember,
   getStaffTypes,
   getVenues,
-  getPayRates
+  getPayRates,
+  getVenuesForSelect,
+  getStaffTypesForSelect,
+  getPayRatesForSelect
 } from './../../../selectors';
 
 const mapStateToProps = state => {
@@ -14,7 +17,10 @@ const mapStateToProps = state => {
     staffMember: getStaffMember(state),
     venues: getVenues(state),
     staffTypes: getStaffTypes(state),
-    payRates: getPayRates(state)
+    payRates: getPayRates(state),
+    venuesForSelect: getVenuesForSelect(state),
+    staffTypesForSelect: getStaffTypesForSelect(state),
+    payRatesForSelect: getPayRatesForSelect(state)
   };
 };
 

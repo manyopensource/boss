@@ -25,11 +25,6 @@ class PersonalForm extends Component {
   };
 
   render() {
-    const options = this.props.genderValues.data.map(item => ({
-      label: this.firstLetterUppercase(item),
-      value: item
-    }));
-
     let dateOfBirth;
     if (
       this.props.staffMember.data &&
@@ -80,7 +75,7 @@ class PersonalForm extends Component {
                 <FormFieldSelect
                   name="gender"
                   label="Gender"
-                  options={options}
+                  options={this.props.genderValuesForSelect}
                   required
                 />
                 <FormFieldDate

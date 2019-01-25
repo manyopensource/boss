@@ -22,21 +22,6 @@ class EmploymentForm extends Component {
   };
 
   render() {
-    const venues = this.props.venues.data.map(item => ({
-      label: item.name,
-      value: item.id
-    }));
-
-    const staffTypes = this.props.staffTypes.data.map(item => ({
-      label: item.name,
-      value: item.id
-    }));
-
-    const payRates = this.props.payRates.data.map(item => ({
-      label: item.name,
-      value: item.id
-    }));
-
     const employmentStatusOptions = [
       {
         label: 'I have supplied my P45 from my previous employer',
@@ -114,12 +99,12 @@ class EmploymentForm extends Component {
                 <FormFieldSelect
                   name="masterVenue"
                   label="Main Venue"
-                  options={venues}
+                  options={this.props.venuesForSelect}
                 />
                 <FormFieldSelect
                   name="otherVenues"
                   label="Other Venues"
-                  options={venues}
+                  options={this.props.venuesForSelect}
                   multi
                   removeSelected
                   required
@@ -127,14 +112,14 @@ class EmploymentForm extends Component {
                 <FormFieldSelect
                   name="staffType"
                   label="Stuff Type"
-                  options={staffTypes}
+                  options={this.props.staffTypesForSelect}
                   required
                 />
                 <FormFieldDate name="startsAt" label="Starts at" required />
                 <FormFieldSelect
                   name="payRateId"
                   label="Pay rate"
-                  options={payRates}
+                  options={this.props.payRatesForSelect}
                   required
                 />
                 <FormField name="dayPreferenceNote" label="Day Preference" />
