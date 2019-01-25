@@ -6,14 +6,20 @@ import FormField from './../../FormField';
 import FormFieldSelect from './../../FormFieldSelect';
 import FormFieldDate from './FormFieldDate';
 
-function onSubmit(values) {
-  if (values.dateOfBirth) {
-    values.dateOfBirth = values.dateOfBirth.format(Dates.commonDateFormat);
-  }
-  console.log(values);
-}
-
 class PersonalForm extends Component {
+  handleSubmit = values => {
+    if (values.dateOfBirth && typeof values.dateOfBirth === 'object') {
+      values.dateOfBirth = values.dateOfBirth.format(Dates.commonDateFormat);
+    }
+    return this.props
+      .updateStaffMemberPersonalDetails(this.props.match.params.id, values)
+      .catch(error => {
+        if (error.response.status === 422) {
+          return error.response.data.errors;
+        }
+      });
+  };
+
   firstLetterUppercase = str => {
     return str.slice(0, 1).toUpperCase() + str.slice(1, str.length);
   };
@@ -24,12 +30,17 @@ class PersonalForm extends Component {
       value: item
     }));
 
-
-    let dateOfBirth = moment(
-      this.props.staffMember.data.dateOfBirth,
-      Dates.commonDateFormat
-    );
-    dateOfBirth = dateOfBirth.isValid() ? dateOfBirth : null;
+    let dateOfBirth;
+    if (
+      this.props.staffMember.data &&
+      this.props.staffMember.data.dateOfBirth
+    ) {
+      dateOfBirth = moment(
+        this.props.staffMember.data.dateOfBirth,
+        Dates.commonDateFormat
+      );
+      dateOfBirth = dateOfBirth.isValid() ? dateOfBirth : null;
+    }
 
     return (
       <article className="boss-content-switcher__chapter boss-content-switcher__chapter_state_visible">
@@ -42,23 +53,23 @@ class PersonalForm extends Component {
               ...this.props.staffMember.data,
               dateOfBirth: dateOfBirth
             }}
-            onSubmit={onSubmit}
-            validate={values => {
-              const errors = {};
-              if (!values.firstName) {
-                errors.firstName = 'Required';
-              }
-              if (!values.surname) {
-                errors.surname = 'Required';
-              }
-              if (!values.gender) {
-                errors.gender = 'Required';
-              }
-              if (!values.dateOfBirth) {
-                errors.dateOfBirth = 'Required';
-              }
-              return errors;
-            }}
+            onSubmit={this.handleSubmit}
+            // validate={values => {
+            //   const errors = {};
+            //   if (!values.firstName) {
+            //     errors.firstName = 'Required';
+            //   }
+            //   if (!values.surname) {
+            //     errors.surname = 'Required';
+            //   }
+            //   if (!values.gender) {
+            //     errors.gender = 'Required';
+            //   }
+            //   if (!values.dateOfBirth) {
+            //     errors.dateOfBirth = 'Required';
+            //   }
+            //   return errors;
+            // }}
             render={({ handleSubmit, pristine, invalid }) => (
               <form
                 className="boss-form boss-form_page_profile-edit"
