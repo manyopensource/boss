@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FilterForm from './FilterForm';
+import FilterForm from './../containers/FilterForm';
 
 class Filter extends Component {
   constructor(props) {
