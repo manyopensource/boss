@@ -31,14 +31,26 @@ class Api {
     );
   }
 
-  // staff members
+  /* staff members */
   getStaffMembers() {
     return this.client.get(STAFF_MEMBERS_PATH);
   }
 
-  // staff member
+  /* staff member */
   getStaffMember(memberId) {
     return this.client.get(`${STAFF_MEMBERS_PATH}/${memberId}`);
+  }
+  
+  updateStaffMemberEmploymentDetails(memberId, data) {
+    return this.client.post(`${STAFF_MEMBERS_PATH}/${memberId}/update_employment_details`, data);
+  }
+
+  updateStaffMemberPersonalDetails(memberId, data) {
+    return this.client.post(`${STAFF_MEMBERS_PATH}/${memberId}/update_personal_details`, data);
+  }
+
+  updateStaffMemberContactDetails(memberId, data) {
+    return this.client.post(`${STAFF_MEMBERS_PATH}/${memberId}/update_contact_details`, data);
   }
 }
 
