@@ -161,7 +161,7 @@ Dashboard.propTypes = {
     phoneNumber: PropTypes.string,
     email: PropTypes.string,
     otherVenueIds: PropTypes.array
-  }),
+  }).isRequired,
   venues: PropTypes.array.isRequired
 };
 
