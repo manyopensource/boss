@@ -2,12 +2,17 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { loadStaffMembers } from './../../../actions';
 import StaffMembers from './../components/StaffMembers';
+import {
+  getStaffMembers,
+  getStaffTypes,
+  getVenues
+} from './../../../selectors';
 
 const mapStateToProps = state => {
   return {
-    staffMembers: state.staffMembers,
-    staffTypes: state.staffTypes,
-    venues: state.venues
+    staffMembers: getStaffMembers(state),
+    staffTypes: getStaffTypes(state),
+    venues: getVenues(state)
   };
 };
 

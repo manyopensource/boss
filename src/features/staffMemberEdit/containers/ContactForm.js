@@ -3,9 +3,11 @@ import { bindActionCreators } from 'redux';
 import { updateStaffMemberContactDetails } from './../../../actions';
 import ContactForm from './../components/ContactForm';
 
+import { getStaffMember } from './../../../selectors';
+
 const mapStateToProps = state => {
   return {
-    staffMember: state.staffMember
+    staffMember: getStaffMember(state)
   };
 };
 
