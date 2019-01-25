@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { updateStaffMemberPersonalDetails } from './../../../actions';
 import PersonalForm from './../components/PersonalForm';
 
 const mapStateToProps = state => {
@@ -8,4 +10,16 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(PersonalForm);
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      updateStaffMemberPersonalDetails
+    },
+    dispatch
+  );
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PersonalForm);
