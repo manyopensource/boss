@@ -19,7 +19,7 @@ class FormFieldSelect extends Component {
             </label>
             <div
               className={
-                meta.touched && meta.error
+                meta.touched && (meta.error || meta.submitError)
                   ? 'boss-form__select boss-form__select_state_error'
                   : 'boss-form__select'
               }
@@ -32,7 +32,8 @@ class FormFieldSelect extends Component {
                 rtl={false}
                 onChange={option => {
                   if (this.props.multi) {
-                    input.onChange(option);
+                    const values = option.map(({ value }) => value);
+                    input.onChange(values);
                   } else {
                     input.onChange(option.value);
                   }
@@ -43,8 +44,8 @@ class FormFieldSelect extends Component {
                 multi={this.props.multi}
               />
             </div>
-            {meta.touched && meta.error && (
-              <FormErrorMessage errorMessage={meta.error} />
+            {meta.touched && (meta.error || meta.submitError) && (
+              <FormErrorMessage errorMessage={meta.error || meta.submitError} />
             )}
           </div>
         )}
