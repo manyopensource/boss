@@ -6,8 +6,19 @@ import Table from './Table';
 import TableRow from './TableRow';
 
 class StaffMembers extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoaded: false
+    };
+  }
+
   componentDidMount() {
-    this.props.loadStaffMembers();
+    this.props.loadStaffMembers().then(() => {
+      this.setState({
+        isLoaded: true
+      });
+    });
   }
 
   render() {
@@ -16,7 +27,7 @@ class StaffMembers extends Component {
         <Dashboard />
         <Content>
           <Table>
-            {!this.props.staffMembers.isLoading
+            {this.state.isLoaded
               ? this.props.staffMembers.data.map(member => {
                   member.staffType = this.props.staffTypes.data.find(
                     type => type.id === member.staffTypeId
