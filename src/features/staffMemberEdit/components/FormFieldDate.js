@@ -25,8 +25,8 @@ class FormFieldDate extends Component {
                 onApply={momentObj => input.onChange(momentObj)}
               />
             </div>
-            {meta.touched && meta.error && (
-              <FormErrorMessage errorMessage={meta.error} />
+            {meta.touched && (meta.error || meta.submitError) && (
+              <FormErrorMessage errorMessage={meta.error || meta.submitError} />
             )}
           </div>
         )}
