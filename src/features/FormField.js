@@ -15,7 +15,7 @@ class FormField extends Component {
               <input {...input} type="text" className="boss-form__input" />
             </label>
             {meta.touched &&
-              meta.error && <FormErrorMessage errorMessage={meta.error} />}
+              (meta.error || meta.submitError) && <FormErrorMessage errorMessage={meta.error || meta.submitError} />}
           </div>
         )}
       />
