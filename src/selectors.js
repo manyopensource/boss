@@ -19,6 +19,46 @@ export const getStaffMembersData = createSelector(
       const masterVenue = venues.data.find(
         venue => venue.id === member.masterVenueId
       );
-      return {...member, staffType, masterVenue}
+      return { ...member, staffType, masterVenue };
     })
+);
+
+export const getVenuesForSelect = createSelector(
+  getVenues,
+  venues => {
+    return venues.data.map(item => ({
+      label: item.name,
+      value: item.id
+    }));
+  }
+);
+
+export const getStaffTypesForSelect = createSelector(
+  getStaffTypes,
+  staffTypes => {
+    return staffTypes.data.map(item => ({
+      label: item.name,
+      value: item.id
+    }));
+  }
+);
+
+export const getPayRatesForSelect = createSelector(
+  getPayRates,
+  payRates => {
+    return payRates.data.map(item => ({
+      label: item.name,
+      value: item.id
+    }));
+  }
+);
+
+export const getGenderValuesForSelect = createSelector(
+  getGenderValues,
+  genderValues => {
+    return genderValues.data.map(item => ({
+      label: item.slice(0, 1).toUpperCase() + item.slice(1, item.length),
+      value: item
+    }));
+  }
 );
