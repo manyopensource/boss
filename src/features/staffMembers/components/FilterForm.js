@@ -28,6 +28,7 @@ class FilterForm extends Component {
   };
 
   render() {
+    const searchParams = new URLSearchParams(this.props.location.search);
     const options = [
       { value: 'enabled', label: 'Enabled' },
       { value: 'disabled', label: 'Disabled' }
@@ -39,12 +40,19 @@ class FilterForm extends Component {
     ];
     return (
       <Form
+        initialValues={{
+          firstName: searchParams.get('firstName'),
+          email: searchParams.get('email'),
+          status: searchParams.get('status'),
+          venue: searchParams.get('venue'),
+          staffType: searchParams.get('staffType')
+        }}
         onSubmit={this.handleSubmit}
         render={({ handleSubmit, meta, pristine, invalid }) => (
           <form className="boss-form" onSubmit={handleSubmit}>
             <div className="boss-form__row boss-form__row_position_last">
               <div className="boss-form__group boss-form__group_layout_half">
-                <FormField name="name" label="Name" />
+                <FormField name="firstName" label="Name" />
                 <FormField name="email" label="Email" />
                 <FormFieldSelect
                   name="status"
